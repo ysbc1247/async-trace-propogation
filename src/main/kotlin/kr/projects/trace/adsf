@@ -1,0 +1,10 @@
+    @Bean
+    fun taskDecorator(): TaskDecorator {
+        return TaskDecorator { runnable: Runnable? ->
+            ContextSnapshot.captureAll(*arrayOfNulls(0)).wrap(
+                runnable!!,
+            )
+        }
+    }
+
+setTaskDecorator(taskDecorator())

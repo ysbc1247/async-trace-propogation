@@ -1,0 +1,23 @@
+logging:
+  pattern:
+    console: "\
+      %clr(%d{${LOG_DATEFORMAT_PATTERN}}){faint} \
+      %clr(${LOG_LEVEL_PATTERN:%5p}) \
+      %clr(${PID:- }){magenta} \
+      %clr(---){faint} \
+      %clr([%15.15t]){faint} \
+      %clr(%-40.40logger{39}){cyan} \
+      %clr(:){faint} \
+      %m${LOG_EXCEPTION_CONVERSION_WORD}%n"
+    dateformat: "yyyy-MM-dd HH:mm:ss.SSS"
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+  exception-conversion-word: "%replace(%wEx){'\n','\u2028'}%nopex"
+  level:
+    kr:
+      projects: TRACE
+    root: WARN
+    org:
+      springframework:
+        web:
+          filter:
+            CommonsRequestLoggingFilter: DEBUG
